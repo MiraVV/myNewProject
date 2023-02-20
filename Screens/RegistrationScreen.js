@@ -59,53 +59,52 @@ export default function RegistrationScreen() {
           style={styles.image}
           source={require("../assets/images/photoBG.png")}
         >
-          <KeyboardAvoidingView
-            behavior={Platform.OS == "ios" ? "padding" : "height"}
+          <View
+            style={{
+              ...styles.formContainer,
+              marginBottom: keyboardShown ? -140 : 0,
+            }}
           >
-            <View
-              style={{
-                ...styles.formContainer,
-                marginBottom: keyboardShown ? 50 : 0,
-              }}
+            <KeyboardAvoidingView
+              behavior={Platform.OS == "ios" ? "padding" : "height"}
             >
-              <View>
-                <View style={styles.imageAdd}>
-                  <View style={styles.plusSign}>
-                    <Image source={require("../assets/images/add.png")} />
-                  </View>
+              <View style={styles.imageAdd}>
+                <View style={styles.plusSign}>
+                  <Image source={require("../assets/images/add.png")} />
                 </View>
-                <Text style={styles.formTitle}>Регистрация</Text>
-                <TextInput
-                  style={styles.input}
-                  placeholder={"Логин"}
-                  value={state.login}
-                  onChangeText={(value) =>
-                    setState((prevState) => ({ ...prevState, login: value }))
-                  }
-                  onFocus={handleLoginFocus}
-                />
-                <TextInput
-                  style={styles.input}
-                  placeholder={"Адрес электронной почты"}
-                  value={state.email}
-                  onChangeText={(value) =>
-                    setState((prevState) => ({ ...prevState, email: value }))
-                  }
-                  onFocus={handleEmailFocus}
-                />
-                <TextInput
-                  style={styles.input}
-                  placeholder={"Пароль"}
-                  value={state.password}
-                  onChangeText={(value) =>
-                    setState((prevState) => ({
-                      ...prevState,
-                      password: value,
-                    }))
-                  }
-                  onFocus={handlePasswordFocus}
-                />
               </View>
+              <Text style={styles.formTitle}>Регистрация</Text>
+              <TextInput
+                style={styles.input}
+                placeholder={"Логин"}
+                value={state.login}
+                onChangeText={(value) =>
+                  setState((prevState) => ({ ...prevState, login: value }))
+                }
+                onFocus={handleLoginFocus}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder={"Адрес электронной почты"}
+                value={state.email}
+                onChangeText={(value) =>
+                  setState((prevState) => ({ ...prevState, email: value }))
+                }
+                onFocus={handleEmailFocus}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder={"Пароль"}
+                value={state.password}
+                onChangeText={(value) =>
+                  setState((prevState) => ({
+                    ...prevState,
+                    password: value,
+                  }))
+                }
+                onFocus={handlePasswordFocus}
+              />
+
               <TouchableOpacity
                 activeOpacity={0.8}
                 style={styles.btn}
@@ -116,8 +115,8 @@ export default function RegistrationScreen() {
               <TouchableOpacity style={styles.login}>
                 <Text style={styles.loginText}>Уже есть аккаунт? Войти</Text>
               </TouchableOpacity>
-            </View>
-          </KeyboardAvoidingView>
+            </KeyboardAvoidingView>
+          </View>
         </ImageBackground>
       </View>
     </TouchableWithoutFeedback>

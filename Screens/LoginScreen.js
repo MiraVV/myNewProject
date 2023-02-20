@@ -51,46 +51,43 @@ export default function LoginScreen() {
           <View
             style={{
               ...styles.formContainer,
-              marginBottom: keyboardShown ? -180 : 0,
             }}
           >
             <KeyboardAvoidingView
               behavior={Platform.OS === "ios" ? "padding" : "height"}
+              style={{
+                marginBottom: keyboardShown ? -180 : 0,
+              }}
             >
-              <View
-              // style={{
-              //   marginBottom: keyboardShown ? -50 : 0,
-              // }}
-              >
-                <Text style={styles.formTitle}>Войти</Text>
-                <TextInput
-                  style={styles.input}
-                  placeholder={"Адрес электронной почты"}
-                  onFocus={handleEmailFocus}
-                  value={state.email}
-                  onChangeText={(value) =>
-                    setState((prevState) => ({ ...prevState, email: value }))
-                  }
-                />
-                <TextInput
-                  style={styles.input}
-                  placeholder={"Пароль"}
-                  secureTextEntry={true}
-                  onFocus={handlePasswordFocus}
-                  onChangeText={(value) =>
-                    setState((prevState) => ({ ...prevState, password: value }))
-                  }
-                />
-              </View>
+              <Text style={styles.formTitle}>Войти</Text>
+              <TextInput
+                style={styles.input}
+                placeholder={"Адрес электронной почты"}
+                onFocus={handleEmailFocus}
+                value={state.email}
+                onChangeText={(value) =>
+                  setState((prevState) => ({ ...prevState, email: value }))
+                }
+              />
+              <TextInput
+                style={styles.input}
+                placeholder={"Пароль"}
+                secureTextEntry={true}
+                onFocus={handlePasswordFocus}
+                onChangeText={(value) =>
+                  setState((prevState) => ({ ...prevState, password: value }))
+                }
+              />
+
+              <TouchableOpacity activeOpacity={0.8} style={styles.btn}>
+                <Text style={styles.btnTitle}>Войти</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.login}>
+                <Text style={styles.loginText}>
+                  Нет аккаунта? Зарегистрироваться
+                </Text>
+              </TouchableOpacity>
             </KeyboardAvoidingView>
-            <TouchableOpacity activeOpacity={0.8} style={styles.btn}>
-              <Text style={styles.btnTitle}>Войти</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.login}>
-              <Text style={styles.loginText}>
-                Нет аккаунта? Зарегистрироваться
-              </Text>
-            </TouchableOpacity>
           </View>
         </ImageBackground>
       </View>
