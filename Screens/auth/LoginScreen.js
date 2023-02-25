@@ -19,7 +19,7 @@ const initialState = {
   password: "",
 };
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
   const [keyboardShown, setKeyboardShown] = useState(false);
   const [state, setState] = useState(initialState);
 
@@ -46,7 +46,7 @@ export default function LoginScreen() {
       <View style={styles.container}>
         <ImageBackground
           style={styles.image}
-          source={require("../assets/images/photoBG.png")}
+          source={require("../../assets/images/photoBG.png")}
         >
           <View
             style={{
@@ -79,10 +79,17 @@ export default function LoginScreen() {
                 }
               />
 
-              <TouchableOpacity activeOpacity={0.8} style={styles.btn}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                style={styles.btn}
+                onPress={submitForm}
+              >
                 <Text style={styles.btnTitle}>Войти</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.login}>
+              <TouchableOpacity
+                style={styles.login}
+                onPress={() => navigation.navigate("Register")}
+              >
                 <Text style={styles.loginText}>
                   Нет аккаунта? Зарегистрироваться
                 </Text>

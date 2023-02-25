@@ -20,7 +20,7 @@ const initialState = {
   email: "",
   password: "",
 };
-export default function RegistrationScreen() {
+export default function RegistrationScreen({ navigation, route }) {
   const [value, setValue] = useState("");
   const [state, setState] = useState(initialState);
   const [active, setActive] = useState({
@@ -57,7 +57,7 @@ export default function RegistrationScreen() {
       <View style={styles.container}>
         <ImageBackground
           style={styles.image}
-          source={require("../assets/images/photoBG.png")}
+          source={require("../../assets/images/photoBG.png")}
         >
           <View
             style={{
@@ -70,7 +70,7 @@ export default function RegistrationScreen() {
             >
               <View style={styles.imageAdd}>
                 <View style={styles.plusSign}>
-                  <Image source={require("../assets/images/add.png")} />
+                  <Image source={require("../../assets/images/add.png")} />
                 </View>
               </View>
               <Text style={styles.formTitle}>Регистрация</Text>
@@ -112,7 +112,10 @@ export default function RegistrationScreen() {
               >
                 <Text style={styles.btnTitle}>Зарегистрироваться</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.login}>
+              <TouchableOpacity
+                style={styles.login}
+                onPress={() => navigation.navigate("Login")}
+              >
                 <Text style={styles.loginText}>Уже есть аккаунт? Войти</Text>
               </TouchableOpacity>
             </KeyboardAvoidingView>
@@ -145,6 +148,7 @@ const styles = StyleSheet.create({
     marginBottom: 33,
     textAlign: "center",
     fontWeight: "500",
+    color: "#212121",
   },
   imageAdd: {
     width: 120,
